@@ -29,7 +29,12 @@ if(!defined('access') or !access) die('This file cannot be directly accessed.');
 function check_system_integrity() {
 
 	$settings = Settings::get();
-
+	/**
+	*it's importatnt to declare install_errors as an array because count() need a countable parameter 
+	* if we dont identify that variable we will receive that error message 
+	* Warning: count(): Parameter must be an array or an object that implements Countable
+	*/
+	$install_errors = [];
 	/*** Check server requirements ***/
 
 	// Try to fix session crap setups (OVH)
